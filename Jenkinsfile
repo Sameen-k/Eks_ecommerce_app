@@ -8,7 +8,6 @@ pipeline {
      
       stage ('Build') {
         steps {
-          dir('backend'){
             sh 'sudo docker build -t kaedmond24/d9backend .'
           }
         }
@@ -25,7 +24,6 @@ pipeline {
 
      stage ('Push') {
         steps {
-          dir('backend'){
             sh 'sudo docker push kaedmond24/d9backend'
           }
         }
@@ -36,7 +34,6 @@ pipeline {
       stage ('Backend deployment') {
         agent {label 'awsDeploy2'}
         steps {
-          dir('backend'){
             sh 'kubectl apply -f deployment.yaml'
           }
         }
@@ -47,7 +44,6 @@ pipeline {
      stage ('Backend service') {
         agent {label 'awsDeploy2'}
         steps {
-          dir('backend'){
             sh 'kubectl apply -f service.yaml '
           }
         }
