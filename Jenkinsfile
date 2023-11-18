@@ -1,5 +1,5 @@
 pipeline {
-  agent {label 'awsDeploy'}
+  agent {label 'awsDeploy2'}
   environment{
       DOCKERHUB_CREDENTIALS = credentials('kaedmond24-dockerhub')
       }
